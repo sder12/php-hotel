@@ -44,7 +44,7 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
-var_dump($hotels);
+//var_dump($hotels);
 ?>
 
 <!DOCTYPE html>
@@ -55,26 +55,29 @@ var_dump($hotels);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
 <body>
-    <main>
-        <h1>Hotel</h1>
-
-        <?php
-        for ($i = 0; $i < count($hotels); $i++) {
-            $hotel = $hotels[$i];
-            echo "<hr>";
-            foreach ($hotel as $key => $item) {
-                echo $key;
-                echo " = ";
-                echo $item;
-                echo "<br/>";
+    <div class="container">
+        <main>
+            <h1>Hotel</h1>
+            <button class="btn btn-dark">Click</button>
+            <?php
+            for ($i = 0; $i < count($hotels); $i++) {
+                $hotel = $hotels[$i];
+                echo "<hr>";
+                foreach ($hotel as $key => $item) {
+                    echo $key;
+                    echo " = ";
+                    echo $item;
+                    echo "<br/>";
+                }
             }
-        }
 
-        ?>
-    </main>
+            ?>
+        </main>
+    </div>
 </body>
 
 </html>
