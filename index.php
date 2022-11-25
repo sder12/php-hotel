@@ -44,6 +44,7 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
+var_dump($hotels);
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +61,14 @@ $hotels = [
     <main>
         <h1>Hotel</h1>
 
-        <?php echo "DEBUG" ?>
+        <?php
+        for ($i = 0; $i < count($hotels); $i++) {
+            $hotel = $hotels[$i];
+            echo $hotel['name'];
+            echo "<br/>";
+        }
+
+        ?>
     </main>
 </body>
 
