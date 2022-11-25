@@ -60,23 +60,65 @@ $hotels = [
 
 <body>
     <div class="container">
-        <main>
+        <header>
             <h1>Hotel</h1>
-            <button class="btn btn-dark">Click</button>
-            <?php
-            for ($i = 0; $i < count($hotels); $i++) {
-                $hotel = $hotels[$i];
-                echo "<hr>";
-                foreach ($hotel as $key => $item) {
-                    echo $key;
-                    echo " = ";
-                    echo $item;
-                    echo "<br/>";
-                }
-            }
+        </header>
 
-            ?>
+        <main>
+            <!-- Print with no style -->
+            <!-- <section>
+                <?php
+                // for ($i = 0; $i < count($hotels); $i++) {
+                //     $hotel = $hotels[$i];
+                //     echo "<hr>";
+                //     foreach ($hotel as $key => $item) {
+                //         echo $key;
+                //         echo " = ";
+                //         echo $item;
+                //         echo "<br/>";
+                //     }
+                // }
+                ?>
+            </section> -->
+
+            <!-- Print with table style-->
+            <section>
+                <table class="table">
+                    <!-- Title key -->
+                    <thead>
+                        <tr>
+                            <th scope="col"> n° </th>
+                            <!-- For each index 0 to print the letteral key -->
+                            <?php
+                            foreach ($hotels[0] as $key => $item) {
+                                echo '<th scope="col">' . $key . '</th>';
+                            }
+                            ?>
+                        </tr>
+                    </thead>
+                    <!-- List Hotel -->
+                    <tbody>
+                        <?php
+                        for ($i = 0; $i < count($hotels); $i++) {
+                            $hotel = $hotels[$i];
+                            echo "<tr>";
+                            echo '<td scope="row">' . $i . ' </td>';
+                            foreach ($hotel as $item) {
+                                echo "<td>" . $item . "</td>";
+                            }
+                            echo "</tr>";
+                        }
+                        ?>
+
+                    </tbody>
+                </table>
+            </section>
+
+
+
         </main>
+
+
     </div>
 </body>
 
