@@ -45,6 +45,45 @@ $hotels = [
     ],
 ];
 //var_dump($hotels);
+
+
+//GET VARIABLES
+$parking = $_GET['parkspot'] ?? "";
+$vote = $_GET['vote'] ?? "";
+//var_dump($parking);
+//var_dump($vote);
+
+
+$hotel_park = [];
+$hotel_vote = [];
+
+if ($parking === "yes") {
+    for ($i = 0; $i < count($hotels); $i++) {
+        $hotel = $hotels[$i];
+        if ($hotel['parking'] === true) {
+            // var_dump($hotel['name']);
+            array_push($hotel_park, $hotel);
+        }
+    }
+    //var_dump($hotel_park);
+    $hotels = $hotel_park;
+}
+
+
+if ($vote) {
+    for ($i = 0; $i < count($hotels); $i++) {
+        $hotel = $hotels[$i];
+        if ($hotel['vote'] >= $vote) {
+            // var_dump($hotel['name']);
+            array_push($hotel_vote, $hotel);
+        }
+    }
+    //var_dump($hotel_park);
+    $hotels = $hotel_vote;
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -81,6 +120,18 @@ $hotels = [
                 ?>
             </section> -->
 
+
+            <section>
+                <form action="index.php" method="GET">
+                    <label for="parkspot">Do you need a parking spot?</label>
+                    <input type="text" id="parkspot" name="parkspot" placeholder="yes or no (show all)">
+                    <label for="vote">Filter by vote</label>
+                    <input type="text" id="vote" name="vote" placeholder="from 1 to 5">
+
+                    <button type="submit" class="btn btn-dark"> Filter </button>
+                </form>
+            </section>
+
             <!-- Print with table style-->
             <section>
                 <table class="table">
@@ -102,9 +153,13 @@ $hotels = [
                         for ($i = 0; $i < count($hotels); $i++) {
                             $hotel = $hotels[$i];
                             echo "<tr>";
-                            echo '<td scope="row">' . $i . ' </td>';
+                            echo '<td scope="row">' . $i + 1 . ' </td>';
                             foreach ($hotel as $item) {
-                                echo "<td>" . $item . "</td>";
+                                if ($item) {
+                                    echo "<td>" . $item . "</td>";
+                                } else {
+                                    echo "<td> X </td>";
+                                }
                             }
                             echo "</tr>";
                         }
