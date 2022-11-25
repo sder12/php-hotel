@@ -64,8 +64,13 @@ var_dump($hotels);
         <?php
         for ($i = 0; $i < count($hotels); $i++) {
             $hotel = $hotels[$i];
-            echo $hotel['name'];
-            echo "<br/>";
+            echo "<hr>";
+            foreach ($hotel as $key => $item) {
+                echo $key;
+                echo " = ";
+                echo $item;
+                echo "<br/>";
+            }
         }
 
         ?>
